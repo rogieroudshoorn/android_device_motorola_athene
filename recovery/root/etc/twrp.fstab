@@ -9,6 +9,8 @@
 /misc           emmc      /dev/block/bootdevice/by-name/misc
 /firmware       vfat      /dev/block/bootdevice/by-name/modem                   flags=backup=1;display="firmware"
 /persist        ext4      /dev/block/bootdevice/by-name/persist                 flags=backup=1;display="persist"
+/vendor         ext4      /dev/block/bootdevice/by-name/oem                     flags=backup=1;display="Vendor"
+/vendor_image   emmc      /dev/block/bootdevice/by-name/oem
 
 /fsg            ext4      /dev/block/bootdevice/by-name/fsg                     flags=backup=1;display="FSG"
 /oem            ext4      /dev/block/bootdevice/by-name/oem                     flags=backup=1;display="OEM"
