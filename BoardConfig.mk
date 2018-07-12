@@ -139,9 +139,9 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 
 # Shims
 TARGET_LD_SHIM_LIBS := \
-    /system/vendor/lib64/lib-imsvt.so|libshims_ims.so \
-    /system/vendor/lib/libizat_core.so|libshims_get_process_name.so \
-    /system/vendor/lib/libril-qc-qmi-1.so|rild_socket.so \
+    /vendor/lib64/lib-imsvt.so|libshims_ims.so \
+    /vendor/lib/libizat_core.so|libshims_get_process_name.so \
+    /vendor/lib/libril-qc-qmi-1.so|rild_socket.so \
     /system/lib/libandroid.so|libshim_ril.so \
     /system/lib/libjustshoot.so|libshims_camera.so
 
@@ -201,6 +201,9 @@ TARGET_USERIMAGES_USE_F2FS := true
 
 # SDClang
 TARGET_USE_SDCLANG := true
+
+# Treble
+TARGET_COPY_OUT_VENDOR := vendor
 
 # SELinux
 #include device/qcom/sepolicy/sepolicy.mk
