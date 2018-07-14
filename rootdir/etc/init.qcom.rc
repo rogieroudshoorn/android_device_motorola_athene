@@ -715,7 +715,7 @@ service ipacm /system/bin/ipacm
     group net_admin inet
     writepid /dev/cpuset/system-background/tasks
 
-service qti /system/vendor/bin/qti
+service qti /vendor/bin/qti
     class main
     user radio
     group radio net_raw oem_2950 usb net_admin
@@ -821,7 +821,7 @@ service diag_mdlog_stop /system/bin/diag_mdlog -k
     disabled
     oneshot
 
-service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
+service qseeproxydaemon /vendor/bin/qseeproxydaemon
     class late_start
     user system
     group system
@@ -940,7 +940,7 @@ service dropboxd /system/bin/dropboxd
     user diag
     group diag
 
-service thermal-com /system/vendor/bin/thermal-engine --minimode
+service thermal-com /vendor/bin/thermal-engine --minimode
     class main
     user root
     disabled
@@ -1014,7 +1014,7 @@ on property:init.svc.per_mgr=running
 on property:sys.shutdown.requested=*
     stop per_proxy
 
-service ppd /system/vendor/bin/mm-pp-daemon
+service ppd /vendor/bin/mm-pp-daemon
     class late_start
     disabled
     user system
@@ -1039,14 +1039,14 @@ service qseecomd /system/bin/qseecomd
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service perfd /system/vendor/bin/perfd
+service perfd /vendor/bin/perfd
    class main
    user root
    socket perfd seqpacket 0666 root system
    disabled
    writepid /dev/cpuset/system-background/tasks
 
-service thermal-engine /system/vendor/bin/thermal-engine
+service thermal-engine /vendor/bin/thermal-engine
     class main
     user root
     socket thermal-send-client stream 0666 system system
