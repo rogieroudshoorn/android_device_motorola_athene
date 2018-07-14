@@ -25,8 +25,8 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.qcom.power.rc
-import init.mmi.usb.rc
+import /vendor/etc/init/hw/init.qcom.power.rc
+import /vendor/etc/init/hw/init.mmi.usb.rc
 
 on early-init
     mount debugfs debugfs /sys/kernel/debug
@@ -301,15 +301,11 @@ on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
     
-    mount_all ./fstab.qcom
+    mount_all /vendor/etc/fstab.qcom
 
     # Mount customize partion
     wait /dev/block/bootdevice/by-name/customize
     mount ext4 /dev/block/bootdevice/by-name/customize /customize ro discard nosuid nodev noatime nodiratime noexec defcontext=u:object_r:user_config_file:s0
-
-    # This partition is used by moto for their system apps. Mounting this breaks boot for some.
-    # wait /dev/block/bootdevice/by-name/oem
-    # mount ext4 /dev/block/bootdevice/by-name/oem /oem ro nosuid nodev context=u:object_r:oemfs:s0
 
     wait /dev/block/bootdevice/by-name/dsp
     mount ext4 /dev/block/bootdevice/by-name/dsp /dsp nosuid nodev barrier=1
@@ -614,7 +610,7 @@ on property:bluetooth.dun.status=stopped
 on property:ro.bluetooth.ftm_enabled=true
     start ftmd
 
-service cnd /system/bin/cnd
+service cnd /vendor/bin/cnd
     class main
     socket cnd stream 660 root inet
     group root wakelock
@@ -636,14 +632,14 @@ service irsc_util /system/bin/irsc_util "/etc/sec_config"
     user root
     oneshot
 
-service imsqmidaemon /system/bin/imsqmidaemon
+service imsqmidaemon /vendor/bin/imsqmidaemon
     class main
     user system
     socket ims_qmid stream 0660 system radio
     group radio log diag
     writepid /dev/cpuset/system-background/tasks
 
-service imsdatadaemon /system/bin/imsdatadaemon
+service imsdatadaemon /vendor/bin/imsdatadaemon
     class main
     user system
     socket ims_datad stream 0660 system radio
@@ -654,13 +650,13 @@ service imsdatadaemon /system/bin/imsdatadaemon
 on property:sys.ims.QMI_DAEMON_STATUS=1
     start imsdatadaemon
 
-service rmt_storage /system/bin/rmt_storage
+service rmt_storage /vendor/bin/rmt_storage
     class core
     user root
     group system wakelock
     writepid /dev/cpuset/system-background/tasks
 
-service tftp_server /system/bin/tftp_server
+service tftp_server /vendor/bin/tftp_server
     class main
     user root
     writepid /dev/cpuset/system-background/tasks
@@ -683,7 +679,7 @@ service hci_filter_root /system/bin/wcnss_filter
     group bluetooth diag oem_2950
     disabled
 
-service port-bridge /system/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
+service port-bridge /vendor/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
     class main
     user radio system
     group radio system inet
@@ -691,13 +687,13 @@ service port-bridge /system/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
     oneshot
 
 # QMUX must be in multiple groups to support external process connections
-service qmuxd /system/bin/qmuxd
+service qmuxd /vendor/bin/qmuxd
     class main
     user root
     group radio audio bluetooth gps nfc diag wakelock
     writepid /dev/cpuset/system-background/tasks
 
-service netmgrd /system/bin/netmgrd
+service netmgrd /vendor/bin/netmgrd
     class main
     user root
     group radio system wakelock
@@ -763,16 +759,16 @@ service ptt_ffbm /system/bin/ptt_socket_app -f -d
     disabled
     oneshot
 
-service cnss_diag /system/bin/cnss_diag -q
+service cnss_diag /vendor/bin/cnss_diag -q
     class late_start
     user root
     group root
     oneshot
 
-service cnss-daemon /system/bin/cnss-daemon -n -l
+service cnss-daemon /vendor/bin/cnss-daemon -n -l
     class late_start
 
-service loc_launcher /system/bin/loc_launcher
+service loc_launcher /vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
     group gps inet net_raw oem_2950 net_admin wifi
@@ -784,7 +780,7 @@ on property:hw.fm.init=1
 on property:hw.fm.init=0
     write /sys/module/radio_iris_transport/parameters/fmsmd_set 0
 
-service atfwd /system/bin/ATFWD-daemon
+service atfwd /vendor/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
@@ -795,7 +791,7 @@ service ril-daemon1 /vendor/bin/hw/rild -c 2
     group radio cache inet misc audio log readproc wakelock diag net_raw
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service rild1-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
+service rild1-wrapper /vendor/bin/sh /vendor/etc/init/init.qcom.ril.sh
     class late_start
     user root
     group root
@@ -827,47 +823,47 @@ service qseeproxydaemon /vendor/bin/qseeproxydaemon
     group system
 
 # Start Sensor daemon
-service motosh /system/bin/motosh boot
+service motosh /vendor/bin/motosh boot
     class late_start
     user compass
     group compass misc input
     oneshot
 
-service mmi-boot-sh /init.mmi.boot.sh
+service mmi-boot-sh /vendor/etc/init/init.mmi.boot.sh
     class core
     user root
     oneshot
 
-service mmi-laser-sh  /init.mmi.laser.sh
-    class core
-    user root
-    oneshot
-    disabled
-
-service mmi-touch-sh /system/bin/sh /init.mmi.touch.sh
-    class core
-    user root
-    oneshot
-
-service oem-hw-sh /init.oem.hw.sh
+service mmi-laser-sh /vendor/etc/init/init.mmi.laser.sh
     class core
     user root
     oneshot
     disabled
 
-service touch-dead-sh /init.oem.hw.sh -f
+service mmi-touch-sh /vendor/bin/sh /vendor/etc/init/init.mmi.touch.sh
+    class core
+    user root
+    oneshot
+
+service oem-hw-sh /vendor/etc/init/init.oem.hw.sh
+    class core
+    user root
+    oneshot
+    disabled
+
+service touch-dead-sh /vendor/etc/init/init.oem.hw.sh -f
     class main
     user root
     oneshot
     disabled
 
-service touch-ready-sh /init.oem.hw.sh -r
+service touch-ready-sh /vendor/etc/init/init.oem.hw.sh -r
     class main
     user root
     oneshot
     disabled
 
-service oem-hw-config-sh /init.oem.hw.sh -p
+service oem-hw-config-sh /vendor/etc/init/init.oem.hw.sh -p
     class main
     user root
     oneshot
@@ -879,12 +875,12 @@ on property:hw.touch.status="dead"
 on property:hw.touch.status="ready"
     # start touch-ready-sh
 
-service charge_only_mode /system/bin/charge_only_mode
+service charge_only_mode /vendor/bin/charge_only_mode
     user root
     group graphics system input
     disabled
 
-service ftmipcd /system/bin/ftmipcd
+service ftmipcd /vendor/bin/ftmipcd
     user radio
     group radio net_raw inet diag
     disabled
@@ -929,7 +925,7 @@ on property:ro.debuggable=1
     # enable group read/write to /dev/log/kernel
     chmod 0660 /dev/log/kernel
 
-service hw_revs /system/bin/hardware_revisions.sh
+service hw_revs /vendor/bin/hardware_revisions.sh
     class late_start
     user system
     group system
@@ -945,7 +941,7 @@ service thermal-com /vendor/bin/thermal-engine --minimode
     user root
     disabled
 
-service esdpll /system/bin/esdpll -w
+service esdpll /vendor/bin/esdpll -w
     class main
     user mot_esdfs
     group mot_esdfs package_info
@@ -962,7 +958,7 @@ on property:sys.wifi.tethering=true
     write /sys/class/net/wlan0/queues/rx-2/rps_cpus ${sys.usb.rps_mask}
     write /sys/class/net/wlan0/queues/rx-3/rps_cpus ${sys.usb.rps_mask}
 
-service fingerprintd /system/bin/fingerprintd
+service fingerprintd /vendor/bin/fingerprintd
     class late_start
     user system
     group input
@@ -978,7 +974,7 @@ service setup_shutdown /system/bin/setup_shutdown.sh
    oneshot
 
 #start camera server as daemon
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service qcamerasvr /vendor/bin/mm-qcamera-daemon
    class late_start
    user camera
    group camera system inet input graphics
@@ -991,18 +987,18 @@ on property:persist.usb.chgdisabled=1
 on property:persist.usb.chgdisabled=0
     write /sys/class/power_supply/battery/charging_enabled 1
 
-service adsprpcd /system/bin/adsprpcd
+service adsprpcd /vendor/bin/adsprpcd
     class main
     user media
     group media
 
-service per_mgr /system/bin/pm-service
+service per_mgr /vendor/bin/pm-service
     class core
     user system
-    group system
+    group system net_raw
     writepid /dev/cpuset/system-background/tasks
 
-service per_proxy /system/bin/pm-proxy
+service per_proxy /vendor/bin/pm-proxy
     class core
     user system
     group system
@@ -1027,13 +1023,13 @@ on property:init.svc.surfaceflinger=stopped
 on property:init.svc.surfaceflinger=running
     start ppd
 
-service wcnss-service /system/bin/wcnss_service
+service wcnss-service /vendor/bin/wcnss_service
     class main
     user system
     group system wifi radio
     oneshot
 
-service qseecomd /system/bin/qseecomd
+service qseecomd /vendor/bin/qseecomd
     class core
     user root
     group root
@@ -1055,13 +1051,13 @@ service thermal-engine /vendor/bin/thermal-engine
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service time_daemon /system/bin/time_daemon
+service time_daemon /vendor/bin/time_daemon
     class late_start
     user root
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service audiod /system/bin/audiod
+service audiod /vendor/bin/audiod
     class late_start
     user system
     group system
@@ -1088,4 +1084,4 @@ on moto-charger
 
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
-    swapon_all ./fstab.qcom
+    swapon_all /vendor/etc/fstab.qcom
