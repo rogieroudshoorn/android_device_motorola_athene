@@ -791,7 +791,7 @@ service ril-daemon1 /vendor/bin/hw/rild -c 2
     group radio cache inet misc audio log readproc wakelock diag net_raw
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
-service rild1-wrapper /vendor/bin/sh /vendor/etc/init/init.qcom.ril.sh
+service rild1-wrapper /vendor/bin/sh /vendor/bin/init.qcom.ril.sh
     class late_start
     user root
     group root
@@ -829,41 +829,41 @@ service motosh /vendor/bin/motosh boot
     group compass misc input
     oneshot
 
-service mmi-boot-sh /vendor/etc/init/init.mmi.boot.sh
+service mmi-boot-sh /vendor/bin/init.mmi.boot.sh
     class core
     user root
     oneshot
 
-service mmi-laser-sh /vendor/etc/init/init.mmi.laser.sh
-    class core
-    user root
-    oneshot
-    disabled
-
-service mmi-touch-sh /vendor/bin/sh /vendor/etc/init/init.mmi.touch.sh
-    class core
-    user root
-    oneshot
-
-service oem-hw-sh /vendor/etc/init/init.oem.hw.sh
+service mmi-laser-sh /vendor/bin/init.mmi.laser.sh
     class core
     user root
     oneshot
     disabled
 
-service touch-dead-sh /vendor/etc/init/init.oem.hw.sh -f
+service mmi-touch-sh /vendor/bin/sh /vendor/bin/init.mmi.touch.sh
+    class core
+    user root
+    oneshot
+
+service oem-hw-sh /vendor/bin/init.oem.hw.sh
+    class core
+    user root
+    oneshot
+    disabled
+
+service touch-dead-sh /vendor/bin/init.oem.hw.sh -f
     class main
     user root
     oneshot
     disabled
 
-service touch-ready-sh /vendor/etc/init/init.oem.hw.sh -r
+service touch-ready-sh /vendor/bin/init.oem.hw.sh -r
     class main
     user root
     oneshot
     disabled
 
-service oem-hw-config-sh /vendor/etc/init/init.oem.hw.sh -p
+service oem-hw-config-sh /vendor/bin/init.oem.hw.sh -p
     class main
     user root
     oneshot
