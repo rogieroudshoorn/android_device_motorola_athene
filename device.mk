@@ -82,12 +82,6 @@ PRODUCT_PACKAGES += \
     libtinycompress \
     libtinyxml
 
-PRODUCT_PACKAGES += \
-    android.hardware.audio@2.0-impl \
-    android.hardware.audio.effect@2.0-impl \
-    android.hardware.broadcastradio@1.0-impl \
-    android.hardware.soundtrigger@2.0-impl
-
 # Audio
 PRODUCT_PACKAGES += \
     audio.primary.msm8952
@@ -111,8 +105,6 @@ PRODUCT_COPY_FILES +=  \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl \
-    camera.device@3.2-impl \
     libbson \
     libshims_camera \
     Snap
@@ -131,9 +123,6 @@ PRODUCT_PACKAGES += \
 
 # Display
 PRODUCT_PACKAGES += \
-    android.hardware.graphics.allocator@2.0-impl \
-    android.hardware.graphics.mapper@2.0-impl \
-    android.hardware.graphics.composer@2.1-impl \
     gralloc.msm8952 \
     copybit.msm8952 \
     hwcomposer.msm8952 \
@@ -145,19 +134,9 @@ PRODUCT_PACKAGES += \
     ethertypes \
     libebtc
 
-# DRM
-PRODUCT_PACKAGES += \
-    android.hardware.drm@1.0-impl \
-    android.hardware.drm@1.0-service
-
 # Fingerprint
 PRODUCT_PACKAGES += \
-    android.hardware.biometrics.fingerprint@2.1-service \
     fingerprint.msm8952
-
-# Gatekeeper HAL
-PRODUCT_PACKAGES += \
-    android.hardware.gatekeeper@1.0-impl
 
 # FM
 PRODUCT_PACKAGES += \
@@ -166,7 +145,6 @@ PRODUCT_PACKAGES += \
 
 # GPS
 PRODUCT_PACKAGES += \
-    android.hardware.gnss@1.0-impl \
     gps.msm8952 \
     libshims_get_process_name \
     libgnsspps
@@ -187,38 +165,16 @@ PRODUCT_COPY_FILES += \
 PRODUCT_PACKAGES += \
     libshims_ims
 
-PRODUCT_PACKAGES += \
-    android.hidl.base@1.0 \
-    android.hidl.manager@1.0
-
 # Keystore
 PRODUCT_PACKAGES += \
     keystore.msm8952
-
-# Vibrator
-PRODUCT_PACKAGES += \
-    android.hardware.vibrator@1.0-impl
  
 # Bluetooth
 PRODUCT_PACKAGES += \
-    android.hardware.bluetooth@1.0-impl \
-    libbt-vendor 
-
-# Memtrack HAL
-PRODUCT_PACKAGES += \
-    android.hardware.memtrack@1.0-impl
- 
-# Keymaster HAL
-PRODUCT_PACKAGES += \
-    android.hardware.keymaster@3.0-impl
-
-# USB HAL
-PRODUCT_PACKAGES += \
-    android.hardware.usb@1.0-service
+    libbt-vendor
  
 # Lights
 PRODUCT_PACKAGES += \
-    android.hardware.light@2.0-impl \
     lights.msm8952
 
 # LiveDisplay native
@@ -240,7 +196,6 @@ PRODUCT_COPY_FILES += \
 
 # Netutils
 PRODUCT_PACKAGES += \
-    android.system.net.netd@1.0 \
     libandroid_net \
     netutils-wrapper-1.0
 
@@ -280,7 +235,6 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-impl \
     power.msm8952
 
 # Ramdisk
@@ -295,10 +249,6 @@ PRODUCT_PACKAGES += \
     init.qcom.rc \
     init.qcom.ril.sh \
     ueventd.rc
-
-# RenderScript HAL
-PRODUCT_PACKAGES += \
-    android.hardware.renderscript@1.0-impl
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -321,9 +271,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf \
     $(LOCAL_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
-
-PRODUCT_PACKAGES += \
-    android.hardware.sensors@1.0-impl
 
 # Stlport
 PRODUCT_PACKAGES += \
@@ -354,7 +301,6 @@ PRODUCT_PACKAGES += \
     WCNSS_wlan_dictionary.dat
 
 PRODUCT_PACKAGES += \
-    android.hardware.wifi@1.0-service \
     libcurl \
     tcpdump \
     wcnss_service
@@ -379,3 +325,5 @@ PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
+# HIDL HALs
+$(call inherit-product, $(LOCAL_PATH)/hidl.mk)
