@@ -18,8 +18,10 @@ PRODUCT_PACKAGES += \
 # Display
 PRODUCT_PACKAGES += \
 	android.hardware.graphics.allocator@2.0-impl \
+	android.hardware.graphics.allocator@2.0-service \
 	android.hardware.graphics.mapper@2.0-impl \
-	android.hardware.graphics.composer@2.1-impl
+	android.hardware.graphics.composer@2.1-impl \
+	android.hardware.graphics.composer@2.1-service
 
 # DRM
 PRODUCT_PACKAGES += \
@@ -77,6 +79,11 @@ PRODUCT_PACKAGES += \
 # Sensors
 PRODUCT_PACKAGES += \
 	android.hardware.sensors@1.0-impl
+
+# Health
+PRODUCT_PACKAGES += \
+	android.hardware.health@1.0-impl \
+	android.hardware.health@1.0-service
 
 # WiFi
 PRODUCT_PACKAGES += \
