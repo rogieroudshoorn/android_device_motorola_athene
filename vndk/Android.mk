@@ -7,7 +7,6 @@ VNDK_SP_LIBRARIES := \
     android.hardware.graphics.mapper@2.0 \
     android.hardware.graphics.common@1.0 \
     android.hardware.renderscript@1.0 \
-    android.hidl.base@1.0 \
     android.hidl.memory@1.0 \
     libRSCpuRef \
     libRSDriver \
@@ -29,175 +28,17 @@ VNDK_SP_LIBRARIES := \
     liblzma \
     libpng \
     libunwind \
-    libutils \
+    libutils
 
 #-------------------------------------------------------------------------------
 # VNDK Extra vendor libraries
 #-------------------------------------------------------------------------------
 
 EXTRA_VENDOR_LIBRARIES := \
-	android.hardware.audio.common@2.0-util \
-	android.hardware.audio.common@2.0 \
-	android.hardware.audio.effect@2.0 \
-	android.hardware.audio@2.0 \
-	android.hardware.biometrics.fingerprint@2.1 \
-	android.hardware.bluetooth@1.0 \
-	android.hardware.broadcastradio@1.0 \
-	android.hardware.camera.common@1.0 \
-	android.hardware.camera.device@1.0 \
-	android.hardware.camera.device@3.2 \
-	android.hardware.camera.device@3.3 \
-	android.hardware.camera.provider@2.4 \
-	android.hardware.cas.native@1.0 \
-	android.hardware.cas@1.0 \
-	android.hardware.configstore-utils \
-	android.hardware.configstore@1.0 \
-	android.hardware.drm@1.0 \
-	android.hardware.gatekeeper@1.0 \
-	android.hardware.gnss@1.0 \
-	android.hardware.graphics.allocator@2.0 \
-	android.hardware.graphics.bufferqueue@1.0 \
-	android.hardware.graphics.common@1.0 \
-	android.hardware.graphics.composer@2.1 \
-	android.hardware.graphics.mapper@2.0 \
-	android.hardware.keymaster@3.0 \
-	android.hardware.light@2.0 \
-	android.hardware.media.omx@1.0 \
-	android.hardware.media@1.0 \
-	android.hardware.memtrack@1.0 \
-	android.hardware.power@1.0 \
-	android.hardware.radio.deprecated@1.0 \
-	android.hardware.radio@1.0 \
-	android.hardware.radio@1.1 \
-	android.hardware.sensors@1.0 \
-	android.hardware.soundtrigger@2.0 \
-	android.hardware.usb@1.0 \
-	android.hardware.vibrator@1.0 \
-	android.hardware.wifi.supplicant@1.0 \
-	android.hardware.wifi@1.0 \
-	android.hardware.wifi@1.1 \
-	android.hidl.allocator@1.0 \
-	android.hidl.memory@1.0 \
-	android.hidl.token@1.0-utils \
-	android.hidl.token@1.0 \
-	android.system.wifi.keystore@1.0 \
-	vendor.qti.hardware.fm@1.0
-
-EXTRA_VENDOR_LIBRARIES += \
-	libETC1 \
-	libRScpp \
-	libandroid \
-	libandroid_runtime \
-	libandroidfw \
-	libappfuse \
-	libaudioclient \
-	libaudiomanager \
-	libaudioroute \
-	libaudioutils \
-	libbacktrace \
-	libbase \
-	libbinder \
-	libc++ \
-	libcamera_client \
-	libcamera_metadata \
-	libcameraservice \
-	libcap \
-	libchrome \
-	libcrypto \
-	libcutils \
-	libdebuggerd_client \
-	libdng_sdk \
-	libdisplayconfig \
-	libdrmframework \
-	libeffectsconfig \
-	libevent \
-	libexpat \
-	libfmq \
-	libft2 \
-	libgps.utils \
-	libgraphicsenv \
-	libgui \
-	libhardware \
-	libhardware_legacy \
-	libharfbuzz_ng \
-	libheif \
-	libhidlbase \
-	libhidlmemory \
-	libhidltransport \
-	libhwbinder \
-	libhwui \
-	libicui18n \
-	libicuuc \
-	libimg_utils \
-	libinput \
-	libjnigraphics \
-	libjpeg \
-	libkeymaster_messages \
-	libkeymaster_portable \
-	libkeymaster_staging \
-	libkeystore_binder \
-	libloc_core \
-	libloc_eng \
-	libloc_pla \
-	libloc_stub \
-	liblzma \
-	libmedia \
-	libmedia_helper \
-	libmedia_omx \
-	libmediadrm \
-	libmediametrics \
-	libmediaplayerservice \
-	libmediautils \
-	libmemtrack \
-	libmemunreachable \
-	libminikin \
-	libnativebridge \
-	libnativehelper \
-	libnativeloader \
-	libnetd_client \
-	libnetutils \
-	libnl \
-	libpackagelistparser \
-	libpcre2 \
-	libpdfium \
-	libpiex \
-	libpng \
-	libpowermanager \
-	libprocessgroup \
-	libprotobuf-cpp-full \
-	libprotobuf-cpp-lite \
-	libradio_metadata \
-	libselinux \
-	libsensor \
-	libskia \
-	libsoftkeymaster \
-	libsoftkeymasterdevice \
-	libsonivox \
-	libsoundtrigger \
-	libspeexresampler \
-	libsqlite \
-	libssl \
-	libstagefright \
-	libstagefright_flacdec \
-	libstagefright_foundation \
-	libstagefright_httplive \
-	libstagefright_omx \
-	libstagefright_omx_utils \
-	libstagefright_wfd \
-	libstagefright_xmlparser \
-	libsysutils \
-	libtinyalsa \
-	libtinyxml2 \
-	libui \
-	libunwind \
-	libusbhost \
-	libutils \
-	libvintf \
-	libvorbisidec \
-	libvulkan \
-	libwifi-system-iface \
-	libxml2 \
-	libziparchive
+    android.hardware.configstore@1.0 \
+    android.hardware.configstore-utils \
+    libbinder \
+    libui
 
 #-------------------------------------------------------------------------------
 # VNDK Modules
