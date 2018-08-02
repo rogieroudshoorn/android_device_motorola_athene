@@ -128,6 +128,9 @@ PRODUCT_PACKAGES += \
     hwcomposer.msm8952 \
     memtrack.msm8952
 
+PRODUCT_PACKAGES += \
+    libdisplayconfig
+
 # Ebtables
 PRODUCT_PACKAGES += \
     ebtables \
@@ -248,7 +251,7 @@ PRODUCT_PACKAGES += \
     init.qcom.power.rc \
     init.qcom.rc \
     init.qcom.ril.sh \
-    ueventd.rc
+    ueventd.qcom.rc
 
 # RIL
 PRODUCT_PACKAGES += \
@@ -277,6 +280,9 @@ PRODUCT_PACKAGES += \
     libstlport
 
 # Thermal
+PRODUCT_PACKAGES += \
+    thermal.msm8952
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/thermal-engine-athene.conf:$(TARGET_COPY_OUT_VENDOR)/etc/thermal-engine-athene.conf
 

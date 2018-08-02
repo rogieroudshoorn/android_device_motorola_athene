@@ -30,14 +30,11 @@ VNDK_SP_LIBRARIES := \
     libunwind \
     libutils
 
-#-------------------------------------------------------------------------------
-# VNDK Extra vendor libraries
-#-------------------------------------------------------------------------------
-
-EXTRA_VENDOR_LIBRARIES := \
+EXTRA_VENDOR_LIBRARIES += \
     android.hardware.configstore@1.0 \
     android.hardware.configstore-utils \
     libbinder \
+    libdisplayconfig \
     libui
 
 #-------------------------------------------------------------------------------
