@@ -32,5 +32,7 @@ LOCAL_COPY_HEADERS += inc/loc_api_rpcgen_cb_rpc.h
 LOCAL_COPY_HEADERS += inc/loc_apicb_appinit.h
 
 LOCAL_LDLIBS += -lpthread
+
 LOCAL_PRELINK_MODULE := false
+LOCAL_PROPRIETARY_MODULE := true
 include $(BUILD_STATIC_LIBRARY)

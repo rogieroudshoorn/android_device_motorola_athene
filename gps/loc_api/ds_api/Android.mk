@@ -8,6 +8,8 @@ LOCAL_MODULE := libloc_ds_api
 
 LOCAL_MODULE_TAGS := optional
 
+LOCAL_PROPRIETARY_MODULE := true
+
 LOCAL_SHARED_LIBRARIES := \
     libutils \
     libcutils \

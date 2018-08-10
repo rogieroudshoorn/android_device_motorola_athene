@@ -63,6 +63,8 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_PRELINK_MODULE := false
 
+LOCAL_PROPRIETARY_MODULE := true
+
 include $(BUILD_SHARED_LIBRARY)
 
 include $(addsuffix /Android.mk, $(addprefix $(LOCAL_PATH)/, platform_lib_abstractions))
