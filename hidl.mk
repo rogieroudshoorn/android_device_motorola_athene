@@ -50,9 +50,9 @@ PRODUCT_PACKAGES += \
 	android.hardware.gatekeeper@1.0-service
 
 # GNSS
-#PRODUCT_PACKAGES += \
-	#android.hardware.gnss@1.0-impl \
-	#android.hardware.gnss@1.0-service
+PRODUCT_PACKAGES += \
+	android.hardware.gnss@1.0-impl \
+	android.hardware.gnss@1.0-service
 
 # Vibrator
 PRODUCT_PACKAGES += \
@@ -84,7 +84,8 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-	android.hardware.power@1.0-impl
+	android.hardware.power@1.0-impl \
+	android.hardware.power@1.0-service
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
@@ -92,7 +93,8 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-	android.hardware.radio@1.0
+	android.hardware.radio@1.0 \
+	android.hardware.radio.deprecated@1.0
 
 # Sensors
 PRODUCT_PACKAGES += \
@@ -104,10 +106,7 @@ PRODUCT_PACKAGES += \
 	android.hardware.health@1.0-impl \
 	android.hardware.health@1.0-service
 
-# Power
-PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-service
-
 # WiFi
 PRODUCT_PACKAGES += \
-	android.hardware.wifi@1.0-service
+	android.hardware.wifi@1.0-service \
+	android.hardware.wifi.offload@1.0
