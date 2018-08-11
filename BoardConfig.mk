@@ -110,7 +110,7 @@ BOARD_HARDWARE_CLASS += \
 NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
 TARGET_USES_C2D_COMPOSITION := true
 TARGET_USES_ION := true
-TARGET_USES_NEW_ION_API :=true
+TARGET_USES_NEW_ION_API := true
 TARGET_FORCE_HWC_FOR_VIRTUAL_DISPLAYS := true
 USE_OPENGL_RENDERER := true
 SF_VSYNC_EVENT_PHASE_OFFSET_NS := 2000000
@@ -119,8 +119,8 @@ VSYNC_EVENT_PHASE_OFFSET_NS := 6000000
 MAX_EGL_CACHE_KEY_SIZE := 12*1024
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-HAVE_ADRENO_SOURCE:= false
-OVERRIDE_RS_DRIVER:= libRSDriver_adreno.so
+HAVE_ADRENO_SOURCE := false
+OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
 
 # Filesystem
 BOARD_BOOTIMAGE_PARTITION_SIZE := 16777216        # 16384 * 1024 mmcblk0p28
@@ -143,7 +143,7 @@ TARGET_LD_SHIM_LIBS := \
     /vendor/lib/libizat_core.so|libshims_get_process_name.so \
     /vendor/lib/libril-qc-qmi-1.so|rild_socket.so \
     /system/lib/libandroid.so|libshim_ril.so \
-    /system/lib/libjustshoot.so|libshims_camera.so
+    /vendor/lib/libjustshoot.so|libshims_camera.so
 
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_athene
@@ -167,7 +167,7 @@ ENABLE_SCHED_BOOST := true
 TARGET_PROVIDES_LIBLIGHT := true
 
 # Properties
-TARGET_VENDOR_PROP += device/motorola/athene/vendor.prop
+TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
 
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
@@ -190,9 +190,6 @@ TARGET_KEYMASTER_WAIT_FOR_QSEE := true
 TARGET_LDPRELOAD := libNimsWrap.so
 BOARD_USES_QCNE := true
 
-# Sensors
-USE_SENSOR_MULTI_HAL := true
-
 # Recovery
 BOARD_HAS_NO_SELECT_BUTTON := true
 TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
@@ -208,7 +205,6 @@ DEVICE_MATRIX_FILE := $(DEVICE_PATH)/compatibility_matrix.xml
 
 # Treble
 PRODUCT_FULL_TREBLE_OVERRIDE := true
-PRODUCT_SHIPPING_API_LEVEL := 24
 PRODUCT_COMPATIBILITY_MATRIX_LEVEL_OVERRIDE := 27
 PRODUCT_VENDOR_MOVE_ENABLED := true
 TARGET_COPY_OUT_VENDOR := vendor
