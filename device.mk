@@ -115,7 +115,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
  
 # LineageActions
 PRODUCT_PACKAGES += \
-    LineageActions
+    #LineageActions
 
 # Display
 PRODUCT_PACKAGES += \
@@ -265,6 +265,15 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/seccomp_policy/mediaextractor.policy:$(TARGET_COPY_OUT_VENDOR)/etc/seccomp_policy/mediaextractor.policy
 
 # Sensors
+PRODUCT_PACKAGES += \
+    libsensorhub \
+    motosh \
+    sensorhub.msm8952 \
+    sensors.msm8952 \
+    sensors.rp \
+    sensors.tof \
+    sensors.tof.vl53l0
+
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/sensors/sensor_def_qcomdev.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/sensor_def_qcomdev.conf \
     $(LOCAL_PATH)/sensors/hals.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sensors/hals.conf
