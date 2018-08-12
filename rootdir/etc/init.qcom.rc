@@ -552,7 +552,7 @@ on post-fs-data
 
     # Imager tuning data for camera subsystem
     mkdir /data/misc/imager 0770 camera camera
-
+    
     setprop vold.post_fs_data_done 1
 
 # Services Start here
@@ -716,7 +716,6 @@ service qti /vendor/bin/qti
     user radio
     group radio net_raw oem_2950 usb net_admin
     writepid /dev/cpuset/system-background/tasks
-    disabled
 
 on property:ro.use_data_netmgrd=false
     # netmgr not supported on specific target
@@ -824,7 +823,7 @@ service qseeproxydaemon /vendor/bin/qseeproxydaemon
 
 # Start Sensor daemon
 service motosh /vendor/bin/motosh boot
-    class late_start
+    class main
     user compass
     group compass misc input
     oneshot
