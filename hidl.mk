@@ -19,7 +19,7 @@ PRODUCT_PACKAGES += \
 # Camera
 PRODUCT_PACKAGES += \
 	android.hardware.camera.provider@2.4-impl \
-	android.hardware.camera.provider@2.4-service \
+	android.hardware.camera.provider@2.4-service_athene \
 	camera.device@3.2-impl
 
 # Configstore
@@ -84,8 +84,8 @@ PRODUCT_PACKAGES += \
 
 # Power
 PRODUCT_PACKAGES += \
-	android.hardware.power@1.0-impl \
-	android.hardware.power@1.0-service
+	android.hardware.power@1.0-service \
+	android.hardware.power@1.0-impl
 
 # RenderScript HAL
 PRODUCT_PACKAGES += \
