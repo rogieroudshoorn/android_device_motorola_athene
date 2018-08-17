@@ -8,7 +8,7 @@ LOCAL_INIT_RC := android.hardware.sensors@1.0-service_32.rc
 LOCAL_32_BIT_ONLY := true
 
 LOCAL_SRC_FILES := \
-        ../../../../hardware/interfaces/sensors/1.0/default/service.cpp \
+        ../../../../../hardware/interfaces/sensors/1.0/default/service.cpp \
 
 LOCAL_SHARED_LIBRARIES := \
         liblog \
