@@ -264,6 +264,7 @@ PRODUCT_COPY_FILES += \
 
 # Sensors
 PRODUCT_PACKAGES += \
+    sensorservice_32 \
     libsensorhub \
     motosh \
     sensorhub.msm8952 \
