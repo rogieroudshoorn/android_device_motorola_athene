@@ -54,7 +54,7 @@ BOARD_KERNEL_IMAGE_NAME := Image.gz
 KERNEL_TOOLCHAIN := $(ANDROID_BUILD_TOP)/prebuilts/gcc/$(HOST_OS)-x86/aarch64/aarch64-linux-android-4.9/bin
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-androidkernel-
 TARGET_CUSTOM_DTBTOOL := dtbTool_moto
-TARGET_KERNEL_CONFIG := lineage_athene_defconfig
+TARGET_KERNEL_CONFIG := athene_defconfig
 TARGET_KERNEL_SOURCE := kernel/motorola/msm8952
 
 # Filesystem
