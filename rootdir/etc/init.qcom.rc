@@ -297,11 +297,16 @@ on boot
     # Wifi firmware reload path
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
+on early-fs
+    start vold
+
 on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
     
-    mount_all /vendor/etc/fstab.qcom
+    exec_start wait_for_keymaster
+    
+    mount_all /vendor/etc/fstab.qcom --late
 
     # Mount customize partion
     wait /dev/block/bootdevice/by-name/customize
@@ -353,7 +358,6 @@ on post-fs
     chmod 0600 /persist/whisper/whisper_only/vector0.bin
 
 on post-fs-data
-    setprop ro.crypto.state "unencrypted"
     mkdir /data/tombstones 0771 system system
     mkdir /tombstones/modem 0771 system system
     mkdir /tombstones/lpass 0771 system system
@@ -555,7 +559,6 @@ on post-fs-data
     mkdir /data/misc/imager 0770 camera camera
     
     setprop vold.post_fs_data_done 1
-    trigger nonencrypted
 
 # Services Start here
 service qfintverify /sbin/qfintverify
