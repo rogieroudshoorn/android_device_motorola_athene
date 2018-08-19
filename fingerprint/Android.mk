@@ -29,5 +29,8 @@ LOCAL_VENDOR_MODULE := true
 LOCAL_MODULE := fingerprint.msm8952
 LOCAL_MODULE_TAGS := optional
 
+LOCAL_32_BIT_ONLY := true
+
 include $(BUILD_SHARED_LIBRARY)
 
+include $(call all-makefiles-under,$(LOCAL_PATH))
