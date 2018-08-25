@@ -66,6 +66,7 @@ LOCAL_SRC_FILES := IPACM_Main.cpp \
 LOCAL_MODULE := ipacm
 LOCAL_CLANG := false
 LOCAL_MODULE_TAGS := optional
+LOCAL_VENDOR_MODULE := true
 
 LOCAL_SHARED_LIBRARIES := liboffloadhal
 LOCAL_SHARED_LIBRARIES += libipanat
