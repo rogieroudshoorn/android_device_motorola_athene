@@ -13,14 +13,11 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-[AID_QCOM_DIAG]
-value:2950
-
-[AID_RFS]
-value:2951
-
-[AID_RFS_SHARED]
-value:2952
+[vendor/bin/cnss-daemon]
+user: AID_SYSTEM
+group: AID_SYSTEM
+mode: 0755
+caps: NET_BIND_SERVICE
 
 [vendor/bin/imsdatadaemon]
 user: AID_SYSTEM
@@ -39,6 +36,15 @@ user: AID_SYSTEM
 group: AID_SYSTEM
 mode: 0755
 caps: NET_BIND_SERVICE
+
+[AID_QCOM_DIAG]
+value:2950
+
+[AID_RFS]
+value:2951
+
+[AID_RFS_SHARED]
+value:2952
 
 [AID_MOT_ACCY]
 value: 5000
