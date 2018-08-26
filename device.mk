@@ -113,9 +113,9 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.graphics.vulkan.disable=true
  
-# LineageActions
+# MotoActions
 PRODUCT_PACKAGES += \
-    #LineageActions
+    MotoActions
 
 # Display
 PRODUCT_PACKAGES += \
@@ -145,7 +145,6 @@ PRODUCT_PACKAGES += \
     gps.default \
     libgnss \
     liblocation_api \
-    android.hardware.gnss@1.0-impl-qti \
     libloc_api-rpc-qc
 
 PRODUCT_COPY_FILES += \
