@@ -35,7 +35,8 @@ EXTRA_VENDOR_LIBRARIES += \
     android.hardware.configstore-utils \
     libbinder \
     libdisplayconfig \
-    libui
+    libui \
+    libcnefeatureconfig
 
 #-------------------------------------------------------------------------------
 # VNDK Modules
