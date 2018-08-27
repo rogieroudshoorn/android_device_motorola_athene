@@ -248,7 +248,6 @@ PRODUCT_PACKAGES += \
     rild_32 \
     libcnefeatureconfig \
     librmnetctl \
-    libshim_ril \
     libxml2
 
 PRODUCT_PACKAGES += \
