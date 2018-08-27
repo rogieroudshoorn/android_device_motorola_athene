@@ -3,3 +3,4 @@ service ril-daemon /vendor/bin/hw/rild_32
     user radio
     group radio cache inet misc audio log readproc wakelock
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
+    setenv LD_PRELOAD "/vendor/lib/rild_socket.so"
