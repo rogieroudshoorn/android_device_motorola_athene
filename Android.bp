@@ -1,0 +1,3 @@
+subdirs = [
+	"services/camera_provider"
+]
