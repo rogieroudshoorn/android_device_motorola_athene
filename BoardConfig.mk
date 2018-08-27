@@ -142,14 +142,6 @@ BOARD_VENDORIMAGE_PARTITION_SIZE := 666271744     # 650656 * 1024 mmcblk0p45
 BOARD_HAVE_QCOM_FM := true
 TARGET_QCOM_NO_FM_FIRMWARE := true
 
-# Shims
-TARGET_LD_SHIM_LIBS := \
-    /vendor/lib64/lib-imsvt.so|libshims_ims.so \
-    /vendor/lib/libizat_core.so|libshims_get_process_name.so \
-    /vendor/lib/libril-qc-qmi-1.so|rild_socket.so \
-    /system/lib/libandroid.so|libshim_ril.so \
-    /vendor/lib/libjustshoot.so|libshims_camera.so
-
 # Init
 TARGET_INIT_VENDOR_LIB := libinit_athene
 TARGET_RECOVERY_DEVICE_MODULES := libinit_athene
