@@ -17,7 +17,7 @@
 /dev/block/bootdevice/by-name/recovery       /recovery           emmc    defaults                                                           recoveryonly
 /dev/block/bootdevice/by-name/misc           /misc               emmc    defaults                                                           defaults
 /dev/block/bootdevice/by-name/oem            /vendor             ext4    ro,barrier=1                                                       wait,check,formattable
-/vendor/bin/linker                           /system/bin/linker  none    defaults,bind                                                      wait
+
 /devices/soc.0/7864900.sdhci/mmc_host*       auto                auto    nosuid,nodev                                                       wait,voldmanaged=sdcard1:auto,encryptable=userdata
 /devices/platform/msm_hsusb*                 auto                auto    nosuid,nodev                                                       wait,voldmanaged=usb:auto
 /dev/block/zram0                             none                swap    defaults                                                           zramsize=536870912,max_comp_streams=4
