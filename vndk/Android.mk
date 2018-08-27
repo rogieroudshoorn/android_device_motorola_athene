@@ -30,13 +30,17 @@ VNDK_SP_LIBRARIES := \
     libunwind \
     libutils
 
+# libdrmframework: missing on P
+# libstagefright: missing on P
 EXTRA_VENDOR_LIBRARIES += \
     android.hardware.configstore@1.0 \
     android.hardware.configstore-utils \
     libbinder \
     libdisplayconfig \
     libui \
-    libcnefeatureconfig
+    libcnefeatureconfig \
+    libdrmframework \
+    libstagefright
 
 #-------------------------------------------------------------------------------
 # VNDK Modules
