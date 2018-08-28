@@ -121,6 +121,11 @@ on boot
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/device/extldo
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
 
+    # Create folders for time
+    mkdir /data/vendor/time
+    chown system system /data/vendor/time/
+    chmod 0660 /data/vendor/time/
+
     # Mark the copy complete flag to not completed
     write /data/misc/radio/copy_complete 0
     chown radio radio /data/misc/radio/copy_complete
