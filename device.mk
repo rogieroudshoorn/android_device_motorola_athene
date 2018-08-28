@@ -253,16 +253,9 @@ PRODUCT_PACKAGES += \
 
 # RIL
 PRODUCT_PACKAGES += \
-    rild_32 \
     libcnefeatureconfig \
     librmnetctl \
     libxml2
-
-PRODUCT_PACKAGES += \
-    rild_socket
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/rild/rild.rc:vendor/etc/init/rild.rc
 
 PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.telephony.gsm.xml:$(TARGET_COPY_OUT_VENDOR)/etc/permissions/android.hardware.telephony.gsm.xml
