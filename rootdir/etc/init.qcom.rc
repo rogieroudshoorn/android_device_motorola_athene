@@ -127,22 +127,22 @@ on boot
     chmod 0660 /data/vendor/time/
 
     # Mark the copy complete flag to not completed
-    write /data/misc/radio/copy_complete 0
-    chown radio radio /data/misc/radio/copy_complete
-    chmod 0660 /data/misc/radio/copy_complete
+    write /data/vendor/radio/copy_complete 0
+    chown radio radio /data/vendor/radio/copy_complete
+    chmod 0660 /data/vendor/radio/copy_complete
 
     # Copy qcril.db
-    copy /vendor/qcril.db /data/misc/radio/qcril.db
-    chown radio radio /data/misc/radio/qcril.db
-    write /data/misc/radio/db_check_done 1
+    copy /vendor/radio/qcril_database/qcril.db /data/vendor/radio/qcril_prebuilt.db
+    chown radio radio /data/vendor/radio/qcril.db
+    write /data/vendor/radio/db_check_done 1
 
     # File flags for prebuilt ril db file
-    write /data/misc/radio/prebuilt_db_support 1
-    chown radio radio /data/misc/radio/prebuilt_db_support
-    chmod 0400 /data/misc/radio/prebuilt_db_support
-    write /data/misc/radio/db_check_done 0
-    chown radio radio /data/misc/radio/db_check_done
-    chmod 0660 /data/misc/radio/db_check_done
+    write /data/vendor/radio/prebuilt_db_support 1
+    chown radio radio /data/vendor/radio/prebuilt_db_support
+    chmod 0400 /data/vendor/radio/prebuilt_db_support
+    write /data/vendor/radio/db_check_done 0
+    chown radio radio /data/vendor/radio/db_check_done
+    chmod 0660 /data/vendor/radio/db_check_done
 
     start rmt_storage
 
@@ -204,12 +204,12 @@ on boot
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
     # File flags for prebuilt ril db file
-    write /data/misc/radio/prebuilt_db_support 1
-    chown radio radio /data/misc/radio/prebuilt_db_support
-    chmod 0400 /data/misc/radio/prebuilt_db_support
-    write /data/misc/radio/db_check_done 0
-    chown radio radio /data/misc/radio/db_check_done
-    chmod 0660 /data/misc/radio/db_check_done
+    write /data/vendor/radio/prebuilt_db_support 1
+    chown radio radio /data/vendor/radio/prebuilt_db_support
+    chmod 0400 /data/vendor/radio/prebuilt_db_support
+    write /data/vendor/radio/db_check_done 0
+    chown radio radio /data/vendor/radio/db_check_done
+    chmod 0660 /data/vendor/radio/db_check_done
 
     # FPC home button permissions
     chown system system /sys/homebutton/enable
@@ -571,6 +571,9 @@ on post-fs-data
 
     # Imager tuning data for camera subsystem
     mkdir /data/misc/imager 0770 camera camera
+
+    # Create directory for radio
+    mkdir /data/vendor/radio 0770 system radio
     
     setprop vold.post_fs_data_done 1
     trigger nonencrypted
@@ -696,7 +699,7 @@ on property:wc_transport.start_root=false
 service hci_filter_root /system/bin/wcnss_filter
     class late_start
     user bluetooth
-    group bluetooth diag oem_2950
+    group bluetooth diag
     disabled
 
 service port-bridge /vendor/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
@@ -723,7 +726,7 @@ service ipacm-diag /system/bin/ipacm-diag
     class main
     user system
     socket ipacm_log_file dgram 660 system net_admin
-    group net_admin oem_2950
+    group net_admin
 
 service ipacm /system/bin/ipacm
     class main
@@ -734,7 +737,7 @@ service ipacm /system/bin/ipacm
 service qti /vendor/bin/qti
     class main
     user radio
-    group radio net_raw oem_2950 usb net_admin
+    group radio net_raw diag usb net_admin
     writepid /dev/cpuset/system-background/tasks
 
 on property:ro.use_data_netmgrd=false
@@ -790,7 +793,7 @@ service cnss-daemon /vendor/bin/cnss-daemon -n -l
 service loc_launcher /vendor/bin/loc_launcher
     #loc_launcher will start as root and set its uid to gps
     class late_start
-    group gps inet net_raw oem_2950 net_admin wifi
+    group gps inet net_raw net_admin wifi
     writepid /dev/cpuset/system-background/tasks
 
 on property:hw.fm.init=1
