@@ -20,9 +20,6 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/languages_full.mk)
 # Also get non-open-source specific aspects if available
 $(call inherit-product, vendor/motorola/athene/athene-vendor.mk)
 
-# Overlay
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
-
 # Screen density
 PRODUCT_AAPT_PREF_CONFIG := xxhdpi
 
@@ -106,10 +103,6 @@ PRODUCT_PACKAGES += \
     camera.msm8952 \
     libbson \
     Snap
-
-# CMActions
-PRODUCT_PACKAGES += \
-    CMActions
 
 # Display
 PRODUCT_PACKAGES += \
