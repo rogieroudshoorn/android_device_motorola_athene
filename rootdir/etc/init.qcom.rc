@@ -843,11 +843,11 @@ service rild1-wrapper /system/bin/sh /system/etc/init.qcom.ril.sh
     group root
     oneshot
 
-service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
-    class late_start
-    user system
-    group system
-    disabled
+#service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
+    #class late_start
+    #user system
+    #group system
+    #disabled
 
 # Start Sensor daemon
 service motosh /system/bin/motosh boot
