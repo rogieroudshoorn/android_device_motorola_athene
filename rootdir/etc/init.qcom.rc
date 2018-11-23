@@ -611,6 +611,7 @@ service config_bt_addr /system/bin/btnvtool -O
     user bluetooth
     group bluetooth radio
     oneshot
+    disabled
 
 service irsc_util /system/bin/irsc_util "/etc/sec_config"
     class main
@@ -623,6 +624,7 @@ service imsqmidaemon /system/bin/imsqmidaemon
     socket ims_qmid stream 0660 system radio
     group radio log diag
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service imsdatadaemon /system/bin/imsdatadaemon
     class main
@@ -645,6 +647,7 @@ service tftp_server /system/bin/tftp_server
     class main
     user root
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 on property:wc_transport.start_hci=true
     start start_hci_filter
@@ -663,6 +666,7 @@ service config_bluetooth /system/bin/sh /init.qcom.bt.sh "onboot"
     user bluetooth
     group bluetooth system
     oneshot
+    disabled
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     class late_start
@@ -710,12 +714,14 @@ service netmgrd /system/bin/netmgrd
     user root
     group radio system wakelock
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service ipacm /system/bin/ipacm
     class main
     user net_admin
     group net_admin inet
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service qti /system/vendor/bin/qti
     class main
@@ -784,6 +790,7 @@ service cnss_diag /system/bin/cnss_diag -q
     user root
     group root
     oneshot
+    disabled
 
 service cnss-daemon /system/bin/cnss-daemon -n -l
     class late_start
@@ -804,6 +811,7 @@ service atfwd /system/bin/ATFWD-daemon
     class late_start
     user system
     group system radio
+    disabled
 
 service hostapd /system/bin/hostapd -dd /data/misc/wifi/hostapd.conf
     class late_start
@@ -819,6 +827,7 @@ service ril-daemon /system/bin/rild
     socket cutback stream 660 media radio
     user root
     group radio cache inet misc audio sdcard_rw sensors qcom_diag log net_raw diag wakelock
+    disabled
 
 service ril-daemon1 /system/bin/rild -c 2
     class main
@@ -838,6 +847,7 @@ service qseeproxydaemon /system/vendor/bin/qseeproxydaemon
     class late_start
     user system
     group system
+    disabled
 
 # Start Sensor daemon
 service motosh /system/bin/motosh boot
@@ -845,6 +855,7 @@ service motosh /system/bin/motosh boot
     user compass
     group compass misc input
     oneshot
+    disabled
 
 service mmi-boot-sh /init.mmi.boot.sh
     seclabel u:r:mmi-boot-sh:s0
@@ -1005,12 +1016,14 @@ service adsprpcd /system/bin/adsprpcd
     class main
     user media
     group media
+    disabled
 
 service per_mgr /system/bin/pm-service
     class core
     user system
     group system
     writepid /dev/cpuset/system-background/tasks
+    disabled
 
 service per_proxy /system/bin/pm-proxy
     class core
@@ -1042,6 +1055,7 @@ service wcnss-service /system/bin/wcnss_service
     user system
     group system wifi radio
     oneshot
+    disabled
 
 service qseecomd /system/bin/qseecomd
     class core
