@@ -1079,11 +1079,6 @@ service time_daemon /vendor/bin/time_daemon
     group root
     writepid /dev/cpuset/system-background/tasks
 
-service audiod /vendor/bin/audiod
-    class late_start
-    user system
-    group system
-
 on charger
     wait /dev/block/bootdevice/by-name/system
     mount ext4 /dev/block/bootdevice/by-name/system /system ro barrier=1
@@ -1101,13 +1096,8 @@ on charger
 
 on moto-charger
     setprop ro.board.platform msm8952
-<<<<<<< HEAD
-    start charge_only_mode
-    start thermal-com
-=======
     start vendor.charge_only_mode
     start vendor.thermal-com
->>>>>>> 534daf2... athene: rootdir: Update for newer charge_only_mode
 
 on property:sys.boot_completed=1
     # Enable ZRAM on boot_complete
