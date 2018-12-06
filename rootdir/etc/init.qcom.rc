@@ -755,13 +755,6 @@ service port-bridge /system/bin/port-bridge /dev/mhi_pipe_32 /dev/ttyGS0
     disabled
     oneshot
 
-# QMUX must be in multiple groups to support external process connections
-service qmuxd /system/bin/qmuxd
-    class main
-    user root
-    group radio audio bluetooth gps nfc diag wakelock
-    writepid /dev/cpuset/system-background/tasks
-
 service vendor.netmgrd /vendor/bin/netmgrd
     class main
     user root
