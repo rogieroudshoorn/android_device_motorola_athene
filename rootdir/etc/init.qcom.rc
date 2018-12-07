@@ -974,7 +974,7 @@ service setup_shutdown /system/bin/setup_shutdown.sh
    oneshot
 
 #start camera server as daemon
-service qcamerasvr /system/bin/mm-qcamera-daemon
+service vendor.qcamerasvr /vendor/bin/mm-qcamera-daemon
    class late_start
    user camera
    group camera system inet input graphics
