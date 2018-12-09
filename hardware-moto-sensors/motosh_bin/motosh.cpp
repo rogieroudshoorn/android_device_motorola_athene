@@ -59,7 +59,7 @@
 #define CS_MAX_LEN 8
 
 /** The firmware blacklist that this flasher will ignore */
-#define STM_FIRMWARE_BLACKLIST "/vendor/etc/firmware/sensorhub-blacklist.txt"
+#define STM_FIRMWARE_BLACKLIST "/vendor/firmware/sensorhub-blacklist.txt"
 /** Maximum filesystem path length */
 #define STM_MAX_PATH 256
 #define STM_SUCCESS 0
